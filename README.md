@@ -50,13 +50,13 @@ The `native/` SwiftUI apps link the Rust engine directly through its C ABI; no W
 | Scheme / product | Bundle ID | MCP | Scope |
 |---|---|---:|---|
 | `ChimeraMac` / Chimera | `org.chimera.vocal-synth` | 8642 | Combined debug shell with all existing modes |
-| `ChimeraPlay` / Chimera Play | `org.chimera.play` | 8643 | Remote source/articulation controls, continuous F1/F2 vowel map, shared CoreMIDI/piano input and Start/Stop |
-| `ChimeraSpeak` / Chimera Speak | `org.chimera.speak` | 8644 | Ollama prompt chat, generated-reply speech, gestural score, layered spectrogram and expandable acoustic views |
-| `ChimeraSing` / Chimera Sing | `org.chimera.sing` | 8645 | Editable piano roll, per-note lyrics, presets, CoreMIDI/piano input, Ollama lyrics, remote transport and shared acoustic views |
-| `ChimeraBeatbox` / Chimera Beatbox | `org.chimera.beatbox` | 8646 | Remote presets, editable beat text, synchronized 16-step matrix, OP-1 transport knobs, press-to-hit pads and 1–0 keyboard control |
-| `ChimeraHead` / Chimera Head | `org.chimera.head` | 8647 | Exclusive audio/model/3D host, physical airflow particles, spring head motion, local camera, telemetry stream and optional LKG output |
-| `ChimeraGenderAge` / Chimera Gender Age | `org.chimera.gender-age` | 8648 | Continuous BodyMix, six voice/articulation pages, Hold Breath and persistent all-controller Whisper |
-| `ChimeraViewer` / Chimera Viewer | `org.chimera.viewer` | 8649 | Pure remote gestural score, full consonants, tube, vocal folds and layered spectrogram |
+| [ChimeraPlay / Chimera Play](native/ChimeraMac/Apps/Play/README.md) | `org.chimera.play` | 8643 | Remote source/articulation controls, continuous F1/F2 vowel map, shared CoreMIDI/piano input and Start/Stop |
+| [ChimeraSpeak / Chimera Speak](native/ChimeraMac/Apps/Speak/README.md) | `org.chimera.speak` | 8644 | Ollama prompt chat, generated-reply speech, gestural score, layered spectrogram and expandable acoustic views |
+| [ChimeraSing / Chimera Sing](native/ChimeraMac/Apps/Sing/README.md) | `org.chimera.sing` | 8645 | Editable piano roll, per-note lyrics, presets, CoreMIDI/piano input, Ollama lyrics, remote transport and shared acoustic views |
+| [ChimeraBeatbox / Chimera Beatbox](native/ChimeraMac/Apps/Beatbox/README.md) | `org.chimera.beatbox` | 8646 | Remote presets, editable beat text, synchronized 16-step matrix, OP-1 transport knobs, press-to-hit pads and 1–0 keyboard control |
+| [ChimeraHead / Chimera Head](native/ChimeraMac/Apps/Head/README.md) | `org.chimera.head` | 8647 | Exclusive audio/model/3D host, physical airflow particles, spring head motion, local camera, telemetry stream and optional LKG output |
+| [ChimeraGenderAge / Chimera Gender Age](native/ChimeraMac/Apps/GenderAge/README.md) | `org.chimera.gender-age` | 8648 | Continuous BodyMix, six voice/articulation pages, Hold Breath and persistent all-controller Whisper |
+| [ChimeraViewer / Chimera Viewer](native/ChimeraMac/Apps/Viewer/README.md) | `org.chimera.viewer` | 8649 | Pure remote gestural score, full consonants, tube, vocal folds and layered spectrogram |
 
 All MCP services listen only on the loopback interface at `http://127.0.0.1:<port>/mcp`. Each app has its own `@main`, view, product name, window size and bundle identifier, so all seven independent apps can run together. Head owns the only independent-app `AudioController` / `AVAudioEngine`; controllers do not create audio outputs or duplicate the 3D head. The combined `ChimeraMac` debug shell retains its own local engine.
 
