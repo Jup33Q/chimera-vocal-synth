@@ -1,0 +1,312 @@
+name: ChimeraMac
+packages:
+  StreamQuilt:
+    url: https://github.com/Jup33Q/streamquilt.git
+    branch: main
+options:
+  bundleIdPrefix: org.chimera
+  deploymentTarget:
+    macOS: "14.0"
+templates:
+  NativeApp:
+    type: application
+    platform: macOS
+    settings:
+      base:
+        SWIFT_VERSION: "5.9"
+        SWIFT_OBJC_BRIDGING_HEADER: ChimeraMac/Bridge/ChimeraBridge.h
+        LIBRARY_SEARCH_PATHS: "$(SRCROOT)/../target/release"
+        OTHER_LDFLAGS: "$(inherited) -lchimera_wasm"
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_NSHumanReadableCopyright: "MIT"
+        CODE_SIGNING_ALLOWED: NO
+        MACOSX_DEPLOYMENT_TARGET: "14.0"
+    resources:
+      - path: ../public/fonts/AVHersheySimplexLight.otf
+      - path: ../public/fonts/AVHERSHEY-LICENSE.txt
+      - path: ../public/data/CMUDICT-LICENSE.txt
+    preBuildScripts: &BuildRustEngine
+      - name: Build Rust engine
+        shell: /bin/bash
+        alwaysRun: true
+        script: |
+          set -e
+          cd "$SRCROOT/.."
+          if [ -x "$HOME/.cargo/bin/cargo" ]; then
+            CARGO="$HOME/.cargo/bin/cargo"
+          else
+            CARGO="$(command -v cargo)"
+          fi
+          "$CARGO" build --release -p chimera-wasm --lib
+    postBuildScripts: &CopyPronunciationDictionary
+      - name: Copy pronunciation dictionary
+        shell: /bin/bash
+        script: |
+          set -e
+          mkdir -p "$TARGET_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH"
+          gzip -dc "$SRCROOT/../public/data/cmudict.txt.gz" > "$TARGET_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH/cmudict.txt"
+        inputFiles:
+          - $(SRCROOT)/../public/data/cmudict.txt.gz
+        outputFiles:
+          - $(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/cmudict.txt
+targets:
+  ChimeraMac:
+    templates: [NativeApp]
+    preBuildScripts: *BuildRustEngine
+    postBuildScripts: *CopyPronunciationDictionary
+    type: application
+    platform: macOS
+    sources:
+      - path: ChimeraMac
+        excludes:
+          - Apps/**/*
+      - path: ../public/data/cmudict.txt.gz
+    settings:
+      base:
+        SWIFT_VERSION: "5.9"
+        SWIFT_OBJC_BRIDGING_HEADER: ChimeraMac/Bridge/ChimeraBridge.h
+        LIBRARY_SEARCH_PATHS: "$(SRCROOT)/../target/release"
+        OTHER_LDFLAGS: "$(inherited) -lchimera_wasm"
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_NSHumanReadableCopyright: "MIT"
+        CODE_SIGNING_ALLOWED: NO
+        MACOSX_DEPLOYMENT_TARGET: "14.0"
+        PRODUCT_BUNDLE_IDENTIFIER: org.chimera.vocal-synth
+        PRODUCT_NAME: Chimera
+  ChimeraPlay:
+    templates: [NativeApp]
+    preBuildScripts: *BuildRustEngine
+    postBuildScripts: *CopyPronunciationDictionary
+    type: application
+    platform: macOS
+    sources:
+      - path: ChimeraMac/Engine
+      - path: ../public/data/cmudict.txt.gz
+      - path: ChimeraMac/MCP
+      - path: ChimeraMac/Views/Components.swift
+      - path: ChimeraMac/Views/VowelMapView.swift
+      - path: ChimeraMac/Apps/Play
+    settings:
+      base:
+        SWIFT_VERSION: "5.9"
+        SWIFT_OBJC_BRIDGING_HEADER: ChimeraMac/Bridge/ChimeraBridge.h
+        LIBRARY_SEARCH_PATHS: "$(SRCROOT)/../target/release"
+        OTHER_LDFLAGS: "$(inherited) -lchimera_wasm"
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_NSHumanReadableCopyright: "MIT"
+        CODE_SIGNING_ALLOWED: NO
+        MACOSX_DEPLOYMENT_TARGET: "14.0"
+        PRODUCT_BUNDLE_IDENTIFIER: org.chimera.play
+        PRODUCT_NAME: Chimera Play
+  ChimeraSpeak:
+    templates: [NativeApp]
+    preBuildScripts: *BuildRustEngine
+    postBuildScripts: *CopyPronunciationDictionary
+    type: application
+    platform: macOS
+    sources:
+      - path: ChimeraMac/Engine
+      - path: ../public/data/cmudict.txt.gz
+      - path: ChimeraMac/MCP
+      - path: ChimeraMac/Views/Components.swift
+      - path: ChimeraMac/Views/AcousticViews.swift
+      - path: ChimeraMac/Views/SpectrogramView.swift
+      - path: ChimeraMac/Apps/Shell
+      - path: ChimeraMac/Apps/Speak
+    settings:
+      base:
+        SWIFT_VERSION: "5.9"
+        SWIFT_OBJC_BRIDGING_HEADER: ChimeraMac/Bridge/ChimeraBridge.h
+        LIBRARY_SEARCH_PATHS: "$(SRCROOT)/../target/release"
+        OTHER_LDFLAGS: "$(inherited) -lchimera_wasm"
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_NSHumanReadableCopyright: "MIT"
+        CODE_SIGNING_ALLOWED: NO
+        MACOSX_DEPLOYMENT_TARGET: "14.0"
+        PRODUCT_BUNDLE_IDENTIFIER: org.chimera.speak
+        PRODUCT_NAME: Chimera Speak
+  ChimeraSing:
+    templates: [NativeApp]
+    preBuildScripts: *BuildRustEngine
+    postBuildScripts: *CopyPronunciationDictionary
+    type: application
+    platform: macOS
+    sources:
+      - path: ChimeraMac/Engine
+      - path: ../public/data/cmudict.txt.gz
+      - path: ChimeraMac/MCP
+      - path: ChimeraMac/Views/Components.swift
+      - path: ChimeraMac/Views/AcousticViews.swift
+      - path: ChimeraMac/Views/SpectrogramView.swift
+      - path: ChimeraMac/Apps/Speak/SpeakAnalysisViews.swift
+      - path: ChimeraMac/Apps/Sing
+    settings:
+      base:
+        SWIFT_VERSION: "5.9"
+        SWIFT_OBJC_BRIDGING_HEADER: ChimeraMac/Bridge/ChimeraBridge.h
+        LIBRARY_SEARCH_PATHS: "$(SRCROOT)/../target/release"
+        OTHER_LDFLAGS: "$(inherited) -lchimera_wasm"
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_NSHumanReadableCopyright: "MIT"
+        CODE_SIGNING_ALLOWED: NO
+        MACOSX_DEPLOYMENT_TARGET: "14.0"
+        PRODUCT_BUNDLE_IDENTIFIER: org.chimera.sing
+        PRODUCT_NAME: Chimera Sing
+  ChimeraBeatbox:
+    templates: [NativeApp]
+    preBuildScripts: *BuildRustEngine
+    postBuildScripts: *CopyPronunciationDictionary
+    type: application
+    platform: macOS
+    sources:
+      - path: ChimeraMac/Engine
+      - path: ../public/data/cmudict.txt.gz
+      - path: ChimeraMac/Rendering
+      - path: ChimeraMac/MCP
+      - path: ChimeraMac/Views/Components.swift
+      - path: ChimeraMac/Views/HeadCanvas.swift
+      - path: ChimeraMac/Apps/Shell
+      - path: ChimeraMac/Apps/Beatbox
+    settings:
+      base:
+        SWIFT_VERSION: "5.9"
+        SWIFT_OBJC_BRIDGING_HEADER: ChimeraMac/Bridge/ChimeraBridge.h
+        LIBRARY_SEARCH_PATHS: "$(SRCROOT)/../target/release"
+        OTHER_LDFLAGS: "$(inherited) -lchimera_wasm"
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_NSHumanReadableCopyright: "MIT"
+        CODE_SIGNING_ALLOWED: NO
+        MACOSX_DEPLOYMENT_TARGET: "14.0"
+        PRODUCT_BUNDLE_IDENTIFIER: org.chimera.beatbox
+        PRODUCT_NAME: Chimera Beatbox
+  ChimeraHead:
+    templates: [NativeApp]
+    preBuildScripts: *BuildRustEngine
+    postBuildScripts: *CopyPronunciationDictionary
+    type: application
+    platform: macOS
+    sources:
+      - path: ChimeraMac/Engine
+      - path: ../public/data/cmudict.txt.gz
+      - path: ChimeraMac/Rendering
+      - path: ChimeraMac/MCP
+      - path: ChimeraMac/Views/Components.swift
+      - path: ChimeraMac/Views/HeadCanvas.swift
+      - path: ChimeraMac/Apps/Head
+    dependencies:
+      - package: StreamQuilt
+        product: StreamQuilt
+    settings:
+      base:
+        SWIFT_VERSION: "5.9"
+        SWIFT_OBJC_BRIDGING_HEADER: ChimeraMac/Bridge/ChimeraBridge.h
+        LIBRARY_SEARCH_PATHS: "$(SRCROOT)/../target/release"
+        OTHER_LDFLAGS: "$(inherited) -lchimera_wasm"
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_NSHumanReadableCopyright: "MIT"
+        CODE_SIGNING_ALLOWED: NO
+        MACOSX_DEPLOYMENT_TARGET: "14.0"
+        PRODUCT_BUNDLE_IDENTIFIER: org.chimera.head
+        PRODUCT_NAME: Chimera Head
+  ChimeraGenderAge:
+    templates: [NativeApp]
+    preBuildScripts: *BuildRustEngine
+    postBuildScripts: *CopyPronunciationDictionary
+    type: application
+    platform: macOS
+    sources:
+      - path: ChimeraMac/Engine
+      - path: ../public/data/cmudict.txt.gz
+      - path: ChimeraMac/MCP
+      - path: ChimeraMac/Views/Components.swift
+      - path: ChimeraMac/Views/BodyPaletteView.swift
+      - path: ChimeraMac/Rendering/BodyPalette.swift
+      - path: ChimeraMac/Apps/GenderAge
+    settings:
+      base:
+        SWIFT_VERSION: "5.9"
+        SWIFT_OBJC_BRIDGING_HEADER: ChimeraMac/Bridge/ChimeraBridge.h
+        LIBRARY_SEARCH_PATHS: "$(SRCROOT)/../target/release"
+        OTHER_LDFLAGS: "$(inherited) -lchimera_wasm"
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_NSHumanReadableCopyright: "MIT"
+        CODE_SIGNING_ALLOWED: NO
+        MACOSX_DEPLOYMENT_TARGET: "14.0"
+        PRODUCT_BUNDLE_IDENTIFIER: org.chimera.gender-age
+        PRODUCT_NAME: Chimera Gender Age
+  ChimeraViewer:
+    templates: [NativeApp]
+    preBuildScripts: *BuildRustEngine
+    postBuildScripts: *CopyPronunciationDictionary
+    type: application
+    platform: macOS
+    sources:
+      - path: ChimeraMac/Engine
+      - path: ../public/data/cmudict.txt.gz
+      - path: ChimeraMac/MCP
+      - path: ChimeraMac/Views/Components.swift
+      - path: ChimeraMac/Views/AcousticViews.swift
+      - path: ChimeraMac/Views/SpectrogramView.swift
+      - path: ChimeraMac/Apps/Speak/SpeakAnalysisViews.swift
+      - path: ChimeraMac/Apps/Viewer
+    settings:
+      base:
+        SWIFT_VERSION: "5.9"
+        SWIFT_OBJC_BRIDGING_HEADER: ChimeraMac/Bridge/ChimeraBridge.h
+        LIBRARY_SEARCH_PATHS: "$(SRCROOT)/../target/release"
+        OTHER_LDFLAGS: "$(inherited) -lchimera_wasm"
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_NSHumanReadableCopyright: "MIT"
+        CODE_SIGNING_ALLOWED: NO
+        MACOSX_DEPLOYMENT_TARGET: "14.0"
+        PRODUCT_BUNDLE_IDENTIFIER: org.chimera.viewer
+        PRODUCT_NAME: Chimera Viewer
+schemes:
+  - name: ChimeraMac
+    build:
+      targets:
+        ChimeraMac: all
+    run:
+      config: Release
+  - name: ChimeraPlay
+    build:
+      targets:
+        ChimeraPlay: all
+    run:
+      config: Release
+  - name: ChimeraSpeak
+    build:
+      targets:
+        ChimeraSpeak: all
+    run:
+      config: Release
+  - name: ChimeraSing
+    build:
+      targets:
+        ChimeraSing: all
+    run:
+      config: Release
+  - name: ChimeraBeatbox
+    build:
+      targets:
+        ChimeraBeatbox: all
+    run:
+      config: Release
+  - name: ChimeraHead
+    build:
+      targets:
+        ChimeraHead: all
+    run:
+      config: Release
+  - name: ChimeraGenderAge
+    build:
+      targets:
+        ChimeraGenderAge: all
+    run:
+      config: Release
+  - name: ChimeraViewer
+    build:
+      targets:
+        ChimeraViewer: all
+    run:
+      config: Release

@@ -1,0 +1,15 @@
+{
+  "originHash" : "22867ba964022f5c0a177b121a6ad69a3a6c971fd7e2b1d5969e9bb09d26c9c4",
+  "pins" : [
+    {
+      "identity" : "streamquilt",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Jup33Q/streamquilt.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "0505696f1602a2818d54cb75a011d44b5bc760a6"
+      }
+    }
+  ],
+  "version" : 3
+}

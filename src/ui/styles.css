@@ -55,12 +55,6 @@
   color-scheme: dark;
 }
 
-.text-colors {
-  --text: #effbff;
-  --text-dim: #e2f5fc;
-  color: var(--text);
-}
-
 * {
   box-sizing: border-box;
 }
@@ -233,7 +227,7 @@ button.primary.large {
 
 .anatomy .no-webgl {
   margin: 24px;
-  color: var(--text-dim);
+  color: var(--blue-dim);
   font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -1213,7 +1207,7 @@ body {
   font-size: 10px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--text-dim);
+  color: var(--blue-dim);
 }
 
 .segmented {
@@ -1232,17 +1226,16 @@ body {
   font-size: 12px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--text-dim);
+  color: var(--blue-dim);
 }
 
 .segmented button:hover {
-  color: var(--text);
-  text-shadow: var(--glow-blue);
+  color: var(--blue-mid);
 }
 
 .segmented button.on {
   background: transparent;
-  color: var(--text);
+  color: var(--blue);
   border-color: var(--blue);
   box-shadow: 0 0 5px rgba(79, 182, 242, 0.35), inset 0 0 4px rgba(79, 182, 242, 0.15);
   text-shadow: var(--glow-blue);
@@ -1297,17 +1290,17 @@ body {
   font-size: 10px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--text-dim);
+  color: var(--blue-dim);
 }
 
 .repo-link {
   display: inline-flex;
-  color: var(--text-dim);
+  color: var(--blue-dim);
   transition: color 120ms, filter 120ms;
 }
 
 .repo-link:hover {
-  color: var(--text);
+  color: var(--blue);
   filter: drop-shadow(0 0 3px rgba(79, 182, 242, 0.7));
 }
 
@@ -1319,7 +1312,7 @@ button.ghost,
   background: transparent;
   border: 1px solid var(--frame);
   border-radius: 0;
-  color: var(--text);
+  color: var(--blue-mid);
   padding: 5px 11px;
   font-family: var(--font);
   font-weight: 300;
@@ -1331,7 +1324,7 @@ button.ghost,
 }
 
 button.primary {
-  color: var(--text);
+  color: var(--blue);
   border-color: var(--blue);
   box-shadow: 0 0 5px rgba(79, 182, 242, 0.35), inset 0 0 4px rgba(79, 182, 242, 0.15);
   text-shadow: var(--glow-blue);
@@ -1344,13 +1337,13 @@ button.primary.large {
 
 button.ghost:hover,
 .chip:hover {
-  color: var(--text);
+  color: var(--blue);
   border-color: var(--blue-dim);
 }
 
 .chip.on,
 .chip[aria-pressed="true"] {
-  color: var(--text);
+  color: var(--blue);
   border-color: var(--blue);
   box-shadow: 0 0 5px rgba(79, 182, 242, 0.35), inset 0 0 4px rgba(79, 182, 242, 0.15);
   text-shadow: var(--glow-blue);
@@ -1416,7 +1409,7 @@ button.ghost:hover,
   font-weight: 300;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--text);
+  color: var(--blue);
   text-shadow: var(--glow-blue);
 }
 
@@ -1426,7 +1419,7 @@ button.ghost:hover,
   font-size: 10px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--text-dim);
+  color: var(--blue-mid);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1503,12 +1496,12 @@ button.ghost:hover,
   font-size: 9px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--text-dim);
+  color: var(--blue-dim);
   cursor: pointer;
 }
 
 .screen-tools .toggle input:checked + span {
-  color: var(--text);
+  color: var(--blue);
   border-color: var(--blue-dim);
   text-shadow: var(--glow-blue);
 }
@@ -1532,12 +1525,12 @@ button.ghost:hover,
 .start-prompt p {
   font-size: 12px;
   line-height: 1.6;
-  color: var(--text-dim);
+  color: var(--blue-mid);
 }
 
 .start-prompt .hint {
   font-size: 11px;
-  color: var(--text-dim);
+  color: var(--blue-dim);
 }
 
 .start-prompt .error {
@@ -1567,7 +1560,7 @@ button.ghost:hover,
   appearance: none;
   background: transparent;
   border: 1px solid var(--frame);
-  color: var(--text-dim);
+  color: var(--blue-dim);
   padding: 2px 7px;
   font-family: var(--font);
   font-size: 9px;
@@ -1577,7 +1570,7 @@ button.ghost:hover,
 }
 
 .enc-tab.on {
-  color: var(--text);
+  color: var(--blue);
   border-color: var(--blue);
   text-shadow: var(--glow-blue);
 }
@@ -1742,7 +1735,7 @@ button.midi {
   font-size: 9px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--text-dim);
+  color: var(--blue-dim);
 }
 
 button.midi.on {
@@ -2015,7 +2008,7 @@ input[type="range"]::-moz-range-thumb {
   font-weight: 300;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--text-dim);
+  color: var(--blue-dim);
   padding: 1px 3px;
   white-space: nowrap;
   text-align: center;
@@ -2174,7 +2167,7 @@ input[type="range"]::-moz-range-thumb {
   background: transparent;
   border: 1px solid var(--frame);
   border-radius: 0;
-  color: var(--text);
+  color: var(--blue-mid);
   padding: 2px 7px;
   font-family: var(--font);
   font-size: 10px;
@@ -2184,7 +2177,7 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .syl.sung {
-  color: var(--blue-mid);
+  color: var(--blue-dim);
   border-color: rgba(19, 57, 84, 0.6);
 }
 
@@ -2209,7 +2202,7 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .breath-mark {
-  color: var(--text-dim);
+  color: var(--blue-mid);
   margin-left: 2px;
 }
 
@@ -2287,7 +2280,7 @@ input[type="range"]::-moz-range-thumb {
   font-size: 9px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--text-dim);
+  color: var(--blue-dim);
   white-space: nowrap;
   overflow: hidden;
 }
@@ -2409,7 +2402,7 @@ input[type="range"]::-moz-range-thumb {
   font-size: 8px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--text-dim);
+  color: var(--blue-dim);
 }
 
 .s-pads .pad-key {
@@ -2417,7 +2410,7 @@ input[type="range"]::-moz-range-thumb {
   top: 3px;
   right: 5px;
   font-size: 8px;
-  color: var(--text-dim);
+  color: var(--blue-dim);
 }
 
 /* transport */
@@ -2487,7 +2480,7 @@ input[type="range"]::-moz-range-thumb {
   font-size: 8px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--text-dim);
+  color: var(--blue-dim);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -2611,7 +2604,7 @@ input[type="range"]::-moz-range-thumb {
   background: transparent;
   border: 1px solid transparent;
   border-radius: 0;
-  color: var(--text);
+  color: var(--blue-mid);
   cursor: pointer;
 }
 
@@ -2647,7 +2640,7 @@ input[type="range"]::-moz-range-thumb {
   font-style: normal;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--text-dim);
+  color: var(--blue-dim);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -2675,14 +2668,14 @@ input[type="range"]::-moz-range-thumb {
   border: 1px solid var(--frame);
   border-radius: 0;
   padding: 4px 10px;
-  color: var(--text);
+  color: var(--blue-mid);
   text-align: left;
   cursor: pointer;
 }
 
 .calls-body .call:hover {
   border-color: var(--blue-dim);
-  color: var(--text);
+  color: var(--blue);
 }
 
 .calls-body .call-name {
@@ -2705,7 +2698,7 @@ input[type="range"]::-moz-range-thumb {
 
 .calls-body .call.sustain.on {
   border-color: var(--blue);
-  color: var(--text);
+  color: var(--blue);
   background: transparent;
 }
 
@@ -2720,7 +2713,7 @@ input[type="range"]::-moz-range-thumb {
   font-size: 8px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--text-dim);
+  color: var(--blue-dim);
   margin-right: 4px;
 }
 
@@ -2734,7 +2727,7 @@ input[type="range"]::-moz-range-thumb {
   font-size: 10px;
   line-height: 1.5;
   letter-spacing: 0.04em;
-  color: var(--text-dim);
+  color: var(--blue-dim);
 }
 
 .cparams-role {
@@ -2743,7 +2736,7 @@ input[type="range"]::-moz-range-thumb {
   line-height: 1.5;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--text-dim);
+  color: var(--blue-mid);
 }
 
 .s-cparams .enc-label {
@@ -2806,7 +2799,7 @@ input[type="range"]::-moz-range-thumb {
   font-size: 12px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--text-dim);
+  color: var(--blue-mid);
 }
 
 .duet-heads {
@@ -2835,7 +2828,7 @@ input[type="range"]::-moz-range-thumb {
 .duet-time {
   flex: none;
   font-variant-numeric: tabular-nums;
-  color: var(--text-dim);
+  color: var(--blue-mid);
 }
 
 .duet-bar input[type="range"] {
@@ -2847,7 +2840,7 @@ input[type="range"]::-moz-range-thumb {
   margin: auto;
   padding: 24px;
   text-align: center;
-  color: var(--text);
+  color: var(--blue-mid);
 }
 
 .duet-msg.error {

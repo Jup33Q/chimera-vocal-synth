@@ -1,13 +1,13 @@
 [package]
 name = "chimera-wasm"
-description = "C-ABI wasm bindings of the CHIMERA engine for the browser (AudioWorklet and main thread)"
+description = "C-ABI bindings of the CHIMERA engine for WebAssembly and native hosts"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
 publish = false
 
 [lib]
-crate-type = ["cdylib", "rlib"]
+crate-type = ["cdylib", "staticlib", "rlib"]
 
 [dependencies]
 chimera = { path = "../chimera" }

@@ -27,8 +27,6 @@ usage: chimera <command> [args] [--float]
   diagnose       [outdir]
   compare csd    [csd-dir] [outdir] [--songs a|b|all|en001a,…] [--body female] [--jobs n]
                  [--against earlier/score.json]  (score.json: distance to the singer, and the verdict)
-  compare tsp    [tsp-dir] [outdir] [--speakers FA,MA,…] [--jobs n] [--dump]
-                 [--against earlier/score.json]  (distance to 23 real speakers, phone by phone)
   calibrate vowels     [male|female|child|all] [--out file]
   calibrate consonants [--out file]
 
@@ -110,7 +108,6 @@ fn run(args: Vec<String>) -> Result<(), String> {
             }
         }
         ["compare", "csd", ..] => compare::csd(&ctx, &args[2..]),
-        ["compare", "tsp", ..] => compare::tsp::run(&ctx, &args[2..]),
         ["diagnose", ..] => diagnose::run(&ctx, &args[1..]),
         ["calibrate", "vowels", ..] => calibrate::vowels(&args[2..]),
         ["calibrate", "consonants", ..] => calibrate::consonants(&args[2..]),

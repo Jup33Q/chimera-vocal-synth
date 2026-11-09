@@ -1,11 +1,11 @@
-//! C-ABI bindings of the CHIMERA engine for the browser. No wasm-bindgen and no imports: the
-//! AudioWorkletGlobalScope has no TextEncoder/TextDecoder or fetch, so everything crosses as
-//! numbers and pointers into this module's linear memory.
+//! C-ABI bindings of the CHIMERA engine for WebAssembly and native hosts. No wasm-bindgen and no
+//! imports: the AudioWorkletGlobalScope has no TextEncoder/TextDecoder or fetch, so everything
+//! crosses as numbers and pointers. The same ABI is linked as a static library by the macOS app.
 //!
 //! Ownership: every object is a handle (`*mut T` from `Box::into_raw`) freed by its `*_free`.
 //! Buffers an object owns (output, gesture scratch, telemetry arrays) keep their address for the
-//! object's lifetime; JavaScript must still re-create its typed-array views whenever
-//! `memory.buffer` changes (memory growth detaches them), and copy telemetry before the next call.
+//! object's lifetime; WebAssembly hosts must re-create typed-array views whenever `memory.buffer`
+//! changes (memory growth detaches them), and all hosts copy telemetry before the next call.
 //!
 //! # Gesture records (layout version 1, [`GESTURE_RECORD`] = 272 bytes, little-endian)
 //! | offset | type        | field |
