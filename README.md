@@ -1,4 +1,15 @@
-# CHIMERA
+<p align="center">
+  <img src="native/ChimeraMac/Assets.xcassets/AppIcon.appiconset/icon-512-1x.png" alt="CHIMERA phoneme logo" width="160">
+</p>
+
+<h1 align="center">CHIMERA</h1>
+
+<p align="center">
+  <a href="https://www.rust-lang.org/"><img src="https://img.shields.io/badge/Rust-engine-E57324?logo=rust&logoColor=white" alt="Rust engine"></a>
+  <a href="https://developer.apple.com/swiftui/"><img src="https://img.shields.io/badge/SwiftUI-macOS_14+-0A84FF?logo=swift&logoColor=white" alt="SwiftUI on macOS 14 and later"></a>
+  <a href="https://bun.sh/"><img src="https://img.shields.io/badge/Bun-web-000000?logo=bun&logoColor=white" alt="Bun web UI"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-22C55E.svg" alt="MIT license"></a>
+</p>
 
 A physical-modeling voice synthesizer in the browser. Every sound comes from a simulated
 airway (lungs, vocal folds or syrinx, a branched vocal tract, lips, nose), not from samples.
