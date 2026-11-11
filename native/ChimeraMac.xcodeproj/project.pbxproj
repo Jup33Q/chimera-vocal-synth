@@ -25,6 +25,7 @@
 		0D01A92D7471AEFD2DE39D51 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEA76093768871343262994 /* AudioController.swift */; };
 		0DCE421071579180D5D9B9D6 /* HeadVisualSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4773F306E4F82194E7060726 /* HeadVisualSnapshot.swift */; };
 		0ED706A91E030890B15EA201 /* VowelSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657316A5CBBCA9F4D9C6F91F /* VowelSpace.swift */; };
+		105B9CD4737FCE863D57E271 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = DD5FCC18CD51C3205FC927D9 /* README.md */; };
 		114750D6EEDC7E19AEC14991 /* AnatomyDetails3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F35A10E990541A27A7C890 /* AnatomyDetails3D.swift */; };
 		142D73E013535CFF585F5526 /* MCPTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C97BCDC9C300C90ED878B /* MCPTools.swift */; };
 		15B677E01F9BF5F1E7D8B397 /* VowelMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550CAFD3EA619E49CE953646 /* VowelMapView.swift */; };
@@ -57,6 +58,7 @@
 		2F8E9DE6326FA8F705F4634A /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEA76093768871343262994 /* AudioController.swift */; };
 		302F2AD5C6D45C99099F2D68 /* VowelSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657316A5CBBCA9F4D9C6F91F /* VowelSpace.swift */; };
 		322E91F17AF94DCC6311D810 /* Metal3DCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2670CE927319A5B8D6E68237 /* Metal3DCanvas.swift */; };
+		324DCFD18E806C406E69A009 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 9A3F68C88497B18D04EECD4D /* README.md */; };
 		339B1F470395C15C1A520DB2 /* ChimeraAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8C639312AEB53A58B2FA0E /* ChimeraAPI.swift */; };
 		352E37DADEF51FDF2C1558FC /* OllamaClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACDF814443154290CD2E635 /* OllamaClient.swift */; };
 		37BA39DDD47C2F634A3C5809 /* cmudict.txt.gz in Resources */ = {isa = PBXBuildFile; fileRef = 042D1B8DD1DFBEBAD0B73369 /* cmudict.txt.gz */; };
@@ -80,6 +82,7 @@
 		5712151E33599A3C2B0D8D4A /* Anatomy3DScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F1A66485162CEBEC090A60 /* Anatomy3DScene.swift */; };
 		576B2114CCCDC8E74E9A2DB8 /* AcousticViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F00D8E33944F6DC49E0473F /* AcousticViews.swift */; };
 		58E5808600BC889B819ECAD7 /* MIDIInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5191AA29E9AE68EBCD1EC82F /* MIDIInputController.swift */; };
+		5931E767D17A4A22E8981ECF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 606154044071286355170A88 /* README.md */; };
 		598BA7FB7AB8D0C13A51EB4A /* ChimeraPlayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F76A9D6C3BDC37603CD2B66 /* ChimeraPlayApp.swift */; };
 		59C8DDD781A850E89F473AED /* ChimeraTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EC7FAD8A4DF91FAEE42DA6 /* ChimeraTypes.swift */; };
 		5A60A90A702BFF171C8E6DDE /* SpectrogramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3158F812A23A6C781B5EA841 /* SpectrogramView.swift */; };
@@ -93,6 +96,7 @@
 		651AA85FC8E3CBE8750E14C2 /* SingWorkflowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1DF3D592CAD49CC746DCBF /* SingWorkflowView.swift */; };
 		65DDC08D4CAC149F6A23CB4A /* Metal3DCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2670CE927319A5B8D6E68237 /* Metal3DCanvas.swift */; };
 		660D2AE5349E3BC47B3817EC /* MetalCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21B841F3CC48F62F8940172 /* MetalCanvas.swift */; };
+		661E152487AF726C8F880237 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5C10D281825053C9B695DCB9 /* README.md */; };
 		6639858E57528EEE29493B1C /* OllamaClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACDF814443154290CD2E635 /* OllamaClient.swift */; };
 		668148DE4A82774A7E9F9B61 /* HeadTelemetry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B7ABC89FF97D748C823BCA /* HeadTelemetry.swift */; };
 		6832EA031F9A1F5796538A02 /* cmudict.txt.gz in Resources */ = {isa = PBXBuildFile; fileRef = 042D1B8DD1DFBEBAD0B73369 /* cmudict.txt.gz */; };
@@ -108,6 +112,7 @@
 		710BA9335D61B867B8D5FDB5 /* MCPTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C97BCDC9C300C90ED878B /* MCPTools.swift */; };
 		760D0105776F27EB301EE041 /* RemoteHeadClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176DA307C8861D1856DDD74C /* RemoteHeadClient.swift */; };
 		7662BB4FEC49A2A95A7BCA81 /* SceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40031E28F090ED7E31F36497 /* SceneFactory.swift */; };
+		76D8E3990D5E67A666DF9C51 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = AB267C838B9216E78A5023A7 /* README.md */; };
 		79715BC863B7F32993F9B294 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C29C24197844A33FD092F7 /* RootView.swift */; };
 		79BB0AEBF55188141196B5A0 /* PhaseShellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A78703D1E264351A858FC8 /* PhaseShellView.swift */; };
 		7DBB2531D3CEF69E0FCFE5D9 /* Anatomy3DScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F1A66485162CEBEC090A60 /* Anatomy3DScene.swift */; };
@@ -126,6 +131,7 @@
 		93EF05AA9E5A3108AA7A6FAA /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D63315942EED1E36757A6D /* Components.swift */; };
 		940F4E857D541274C7050A46 /* MCPTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7C97BCDC9C300C90ED878B /* MCPTools.swift */; };
 		9542A65ED7F73C8A17FFA2F1 /* BodyPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21135342DFB7441DFA7191FA /* BodyPalette.swift */; };
+		96E6E0C7E0B9ACF1C4582DF3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 515C5A9AEE23EBBF62884A3A /* README.md */; };
 		9ABF1D00FD3F4C6FCC623994 /* ChimeraBeatboxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B9901349D35C8334BA0698 /* ChimeraBeatboxApp.swift */; };
 		9C9AE8B3FBC8FA2D7999FC89 /* HeadVisualSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4773F306E4F82194E7060726 /* HeadVisualSnapshot.swift */; };
 		9E498DA2F9FFEAB65593AF8A /* VowelSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657316A5CBBCA9F4D9C6F91F /* VowelSpace.swift */; };
@@ -151,6 +157,7 @@
 		B166774762714AAC2265C359 /* HeadCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF23E9391D1BA56B38E0B2F /* HeadCanvas.swift */; };
 		B250DBF33CE7F06AF757085F /* SpectrogramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3158F812A23A6C781B5EA841 /* SpectrogramView.swift */; };
 		B3D1FF952DA4660BC8B2CAE2 /* PianoRollEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E9E0B56C518D37475EDCD1 /* PianoRollEditor.swift */; };
+		B5C5F17D70B6FAB13A0CB899 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FDB77A11B933CD1C7D3D855E /* README.md */; };
 		B832618387B1DD40E9107025 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEA76093768871343262994 /* AudioController.swift */; };
 		B8EE0ADF75FF191A6442A735 /* cmudict.txt.gz in Resources */ = {isa = PBXBuildFile; fileRef = 042D1B8DD1DFBEBAD0B73369 /* cmudict.txt.gz */; };
 		BBFFB4AA805449B0000FEBE1 /* InstrumentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C0378412DD67EC82A72B94 /* InstrumentModel.swift */; };
@@ -221,10 +228,13 @@
 		4B76A14FB80C17DCECC4E922 /* ChimeraSpeakApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChimeraSpeakApp.swift; sourceTree = "<group>"; };
 		4CF1B855E4F2D6DFF0EE3DDA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5104D3FEDF43158D1517EBA9 /* BeatboxWorkflowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeatboxWorkflowView.swift; sourceTree = "<group>"; };
+		515C5A9AEE23EBBF62884A3A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		5191AA29E9AE68EBCD1EC82F /* MIDIInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIDIInputController.swift; sourceTree = "<group>"; };
 		522E9ADC3725A0707E839B90 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		550CAFD3EA619E49CE953646 /* VowelMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VowelMapView.swift; sourceTree = "<group>"; };
 		5A2B0897C56464600E5AA33B /* ModeViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeViews.swift; sourceTree = "<group>"; };
+		5C10D281825053C9B695DCB9 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		606154044071286355170A88 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		657316A5CBBCA9F4D9C6F91F /* VowelSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VowelSpace.swift; sourceTree = "<group>"; };
 		67A3AA2A5025A51F3564618B /* ChimeraSing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChimeraSing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6ACDF814443154290CD2E635 /* OllamaClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OllamaClient.swift; sourceTree = "<group>"; };
@@ -239,10 +249,12 @@
 		93B8E6A1D0858EC81530E8BC /* MCPServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCPServer.swift; sourceTree = "<group>"; };
 		975E1788FF4869781B3CC986 /* ChimeraPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChimeraPlayView.swift; sourceTree = "<group>"; };
 		998BDBE5199A4067D721F56A /* PhosphorRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhosphorRenderer.swift; sourceTree = "<group>"; };
+		9A3F68C88497B18D04EECD4D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A4C0378412DD67EC82A72B94 /* InstrumentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentModel.swift; sourceTree = "<group>"; };
 		A5B7ABC89FF97D748C823BCA /* HeadTelemetry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadTelemetry.swift; sourceTree = "<group>"; };
 		A5B9901349D35C8334BA0698 /* ChimeraBeatboxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChimeraBeatboxApp.swift; sourceTree = "<group>"; };
 		AA3EA7A61D4F32668114DB5A /* ChimeraHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChimeraHeadView.swift; sourceTree = "<group>"; };
+		AB267C838B9216E78A5023A7 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B2E64FA5C2C41FEAA5E1C4BD /* ChimeraSpeak.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChimeraSpeak.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8F35A10E990541A27A7C890 /* AnatomyDetails3D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnatomyDetails3D.swift; sourceTree = "<group>"; };
 		BE8C639312AEB53A58B2FA0E /* ChimeraAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChimeraAPI.swift; sourceTree = "<group>"; };
@@ -255,6 +267,7 @@
 		CEB6A1D031BD133FE897F07E /* ChimeraMacApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChimeraMacApp.swift; sourceTree = "<group>"; };
 		D39917112246FA09E7811798 /* ChimeraHeadApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChimeraHeadApp.swift; sourceTree = "<group>"; };
 		D52C9FF8725608FFE68DA799 /* HeadModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadModel.swift; sourceTree = "<group>"; };
+		DD5FCC18CD51C3205FC927D9 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E4C8815E8B5B9D49B54485AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E90CCC7D2521B731773F2395 /* ChimeraMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChimeraMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAB7186E5D6D25D2762C9F59 /* AirflowParticles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirflowParticles.swift; sourceTree = "<group>"; };
@@ -265,6 +278,7 @@
 		F6A78703D1E264351A858FC8 /* PhaseShellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseShellView.swift; sourceTree = "<group>"; };
 		F6C29C24197844A33FD092F7 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		FA4ED3938B6BD64AC8FBE50B /* ChimeraViewerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChimeraViewerApp.swift; sourceTree = "<group>"; };
+		FDB77A11B933CD1C7D3D855E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FE7B46FD19CB11FA902B1B72 /* BodyPaletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyPaletteView.swift; sourceTree = "<group>"; };
 		FFC3C1C099B2C641DF1DF555 /* ChimeraSingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChimeraSingApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -322,6 +336,7 @@
 				C3970436D11E84089C0638A8 /* Assets.xcassets */,
 				0F76A9D6C3BDC37603CD2B66 /* ChimeraPlayApp.swift */,
 				975E1788FF4869781B3CC986 /* ChimeraPlayView.swift */,
+				9A3F68C88497B18D04EECD4D /* README.md */,
 			);
 			name = Play;
 			path = ChimeraMac/Apps/Play;
@@ -336,6 +351,7 @@
 				D52C9FF8725608FFE68DA799 /* HeadModel.swift */,
 				0B2A10F5A33FC674083E37DD /* HeadTools.swift */,
 				8290C57E3BB2FC4AC0B2744C /* LKGHeadController.swift */,
+				FDB77A11B933CD1C7D3D855E /* README.md */,
 			);
 			name = Head;
 			path = ChimeraMac/Apps/Head;
@@ -388,6 +404,7 @@
 				EF94C49FD3354F0178A0A0C2 /* Assets.xcassets */,
 				F3D764AA2F724FF84D4F5A1F /* ChimeraGenderAgeApp.swift */,
 				40C16313D43ABF110E545B97 /* GenderAgeWorkflowView.swift */,
+				DD5FCC18CD51C3205FC927D9 /* README.md */,
 			);
 			name = GenderAge;
 			path = ChimeraMac/Apps/GenderAge;
@@ -399,6 +416,7 @@
 				4CF1B855E4F2D6DFF0EE3DDA /* Assets.xcassets */,
 				5104D3FEDF43158D1517EBA9 /* BeatboxWorkflowView.swift */,
 				A5B9901349D35C8334BA0698 /* ChimeraBeatboxApp.swift */,
+				AB267C838B9216E78A5023A7 /* README.md */,
 			);
 			name = Beatbox;
 			path = ChimeraMac/Apps/Beatbox;
@@ -425,6 +443,7 @@
 				2B76F44EE2ED3E9032891DFC /* Assets.xcassets */,
 				FFC3C1C099B2C641DF1DF555 /* ChimeraSingApp.swift */,
 				29E9E0B56C518D37475EDCD1 /* PianoRollEditor.swift */,
+				515C5A9AEE23EBBF62884A3A /* README.md */,
 				32B5A219F7DC4C6FF0D20F3B /* SingGeneration.swift */,
 				CE1DF3D592CAD49CC746DCBF /* SingWorkflowView.swift */,
 			);
@@ -437,6 +456,7 @@
 			children = (
 				BF13E90B5023EA62A74F2F7C /* Assets.xcassets */,
 				4B76A14FB80C17DCECC4E922 /* ChimeraSpeakApp.swift */,
+				5C10D281825053C9B695DCB9 /* README.md */,
 				33AEC9477CA205BD8D2A8E7C /* SpeakAnalysisViews.swift */,
 				253422911453C0133F4FBAE2 /* SpeakChat.swift */,
 				3BF7CCC09599E01FD4B5392E /* SpeakWorkflowView.swift */,
@@ -475,6 +495,7 @@
 				522E9ADC3725A0707E839B90 /* Assets.xcassets */,
 				FA4ED3938B6BD64AC8FBE50B /* ChimeraViewerApp.swift */,
 				3F514284135E3C5041458ECF /* ChimeraViewerView.swift */,
+				606154044071286355170A88 /* README.md */,
 			);
 			name = Viewer;
 			path = ChimeraMac/Apps/Viewer;
@@ -494,7 +515,7 @@
 			path = ChimeraMac;
 			sourceTree = "<group>";
 		};
-		"TEMP_FFCAA311-8272-48AC-A67D-3F6326C40A7D" /* Apps */ = {
+		"TEMP_082B3276-9D77-4083-9B10-A022BED34B31" /* Apps */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -712,6 +733,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C269A5A0750236E7F6C04BD /* Assets.xcassets in Resources */,
+				324DCFD18E806C406E69A009 /* README.md in Resources */,
 				37BA39DDD47C2F634A3C5809 /* cmudict.txt.gz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -721,6 +743,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0E95DBD7315357FCBE22C62 /* Assets.xcassets in Resources */,
+				76D8E3990D5E67A666DF9C51 /* README.md in Resources */,
 				23EAE6E464AC1C33F623EA8A /* cmudict.txt.gz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -730,6 +753,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E02092079DD60BDF12C43B4E /* Assets.xcassets in Resources */,
+				661E152487AF726C8F880237 /* README.md in Resources */,
 				28759C11B53D034ACCCD3E90 /* cmudict.txt.gz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -739,6 +763,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A149CF845CE586F92D3BCD15 /* Assets.xcassets in Resources */,
+				5931E767D17A4A22E8981ECF /* README.md in Resources */,
 				6832EA031F9A1F5796538A02 /* cmudict.txt.gz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -748,6 +773,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F977B137969E10400C31C67C /* Assets.xcassets in Resources */,
+				B5C5F17D70B6FAB13A0CB899 /* README.md in Resources */,
 				B08FDDEC2851462B960A5C72 /* cmudict.txt.gz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -757,6 +783,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6993C59B235FD25E2A00ACC6 /* Assets.xcassets in Resources */,
+				105B9CD4737FCE863D57E271 /* README.md in Resources */,
 				08974543944D6C5D02AA328E /* cmudict.txt.gz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -775,6 +802,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1ADF6858AE9320087084B96 /* Assets.xcassets in Resources */,
+				96E6E0C7E0B9ACF1C4582DF3 /* README.md in Resources */,
 				B8EE0ADF75FF191A6442A735 /* cmudict.txt.gz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

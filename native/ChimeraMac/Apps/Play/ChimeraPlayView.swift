@@ -20,8 +20,15 @@ struct ChimeraPlayView: View {
         .background(Color.black)
         .foregroundStyle(Phosphor.white)
         .task {
-            midi.onNoteOn = { note in model.noteOn(note) }
+            midi.onNoteOnWithVelocity = { note, velocity in
+                model.setMIDIVelocity(velocity)
+                model.noteOn(note)
+            }
             midi.onNoteOff = { note in model.noteOff(note) }
+            midi.onPitchBend = { value in model.setMIDIPitchBend(value) }
+            midi.onChannelPressure = { value in model.setMIDIVibrato(value) }
+            midi.onControlChange = { controller, value in model.midiControlChange(controller, value: value) }
+            midi.setEnabled(true)
             model.prepare()
         }
         .onDisappear { midi.stop() }
@@ -78,7 +85,7 @@ private struct PlayControls: View {
         VStack(spacing: 12) {
             Screen(title: "VOICE", subtitle: "SOURCE PARAMETERS") {
                 LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 14) {
-                    InstrumentSlider(label: "Pitch", value: $model.source.f0, range: 40...1_100, unit: " Hz", color: Phosphor.green)
+                    InstrumentSlider(label: "Pitch", value: Binding(get: { model.source.f0 }, set: model.setPitch), range: 40...1_100, unit: " Hz", color: Phosphor.green)
                     InstrumentSlider(label: "Pressure", value: $model.source.pressure, range: 2...22, unit: " cmH₂O", color: Phosphor.red)
                     InstrumentSlider(label: "Breathiness", value: $model.source.breathiness, range: 0...1, color: Phosphor.pink)
                     InstrumentSlider(label: "Tension", value: $model.source.tension, range: 0...1, color: Phosphor.white)
@@ -97,7 +104,7 @@ private struct PlayControls: View {
                     InstrumentSlider(label: "Tongue Y", value: $model.artic.tbY, range: 1...15, color: Phosphor.green)
                 }
             }
-            Screen(title: "KEYS", subtitle: "HOLD A NOTE") {
+            Screen(title: "KEYS", subtitle: String(format: "POLYBRUTE / PITCH %+.1f ST", model.midiPitchOffset)) {
                 VStack(spacing: 10) {
                     HStack {
                         Spacer()
@@ -105,6 +112,9 @@ private struct PlayControls: View {
                             .frame(width: 220)
                     }
                     MIDIInputView(midi: midi)
+                    Text("RIBBON CC9 ±5 ST  ·  MORPHÉE X/Y FULL VOWELS (Y 0…104) / Z INVERTED BREATHINESS  ·  VELOCITY PRESSURE / AFTERTOUCH VIBRATO")
+                        .font(.system(size: 8, design: .monospaced))
+                        .foregroundStyle(.secondary)
                     PianoKeys(heldNotes: model.heldNotes, onNoteOn: model.noteOn, onNoteOff: model.noteOff)
                 }
             }

@@ -17,7 +17,8 @@ Play is the direct remote instrument for CHIMERA Head. It controls the physical 
 - Continuous F1/F2 vowel map using the shared calibrated `VowelSpace` model.
 - Source pitch, pressure, breathiness, tension and vibrato controls.
 - Mouth and tongue articulation controls with coalesced remote updates.
-- Shared CoreMIDI note input and on-screen piano keys.
+- Shared CoreMIDI note input and on-screen piano keys; MIDI starts enabled in Play.
+- PolyBrute expression for the monophonic voice, including calibrated Morphée X/Y vowel control and explicit no-MIDI defaults. See the [PolyBrute performance mapping table](../../../../README.md#polybrute-performance-mapping) for controller names, MIDI channels/messages, parameter targets and ranges.
 - Live Head gate, F0, lung-pressure and output-RMS telemetry.
 
 ## Identity

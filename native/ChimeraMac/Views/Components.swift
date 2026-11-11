@@ -272,6 +272,11 @@ struct MIDIInputView: View {
                     .font(.system(size: 9, design: .monospaced))
                     .foregroundStyle(Phosphor.amber)
             }
+            if let expression = midi.lastExpression {
+                Text(expression.uppercased())
+                    .font(.system(size: 9, design: .monospaced))
+                    .foregroundStyle(Phosphor.pink)
+            }
             Spacer()
             Text(midi.sourceNames.joined(separator: " · "))
                 .font(.system(size: 8, design: .monospaced))

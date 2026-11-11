@@ -13,9 +13,14 @@ final class MIDIInputController: ObservableObject {
     @Published private(set) var status = "MIDI off"
     @Published private(set) var sourceNames: [String] = []
     @Published private(set) var lastNote: Int?
+    @Published private(set) var lastExpression: String?
 
     var onNoteOn: ((Int) -> Void)?
+    var onNoteOnWithVelocity: ((Int, Int) -> Void)?
     var onNoteOff: ((Int) -> Void)?
+    var onPitchBend: ((Int) -> Void)?
+    var onChannelPressure: ((Int) -> Void)?
+    var onControlChange: ((_ controller: Int, _ value: Int) -> Void)?
 
     private var client = MIDIClientRef()
     private var input = MIDIPortRef()
@@ -36,13 +41,30 @@ final class MIDIInputController: ObservableObject {
                 return
             }
         }
-        let result = MIDIInputPortCreateWithProtocol(client, "Lyric notes" as CFString, ._1_0, &input) { [weak self] packets, _ in
+        let result = MIDIInputPortCreateWithProtocol(client, "Chimera input" as CFString, ._1_0, &input) { [weak self] packets, _ in
             let messages = Self.messages(from: packets)
             Task { @MainActor in
                 guard let self, self.enabled else { return }
                 for message in messages {
-                    self.lastNote = message.note
-                    if message.on { self.onNoteOn?(message.note) } else { self.onNoteOff?(message.note) }
+                    switch message {
+                    case let .note(note, on, velocity):
+                        self.lastNote = note
+                        if on {
+                            self.onNoteOnWithVelocity?(note, velocity)
+                            self.onNoteOn?(note)
+                        } else {
+                            self.onNoteOff?(note)
+                        }
+                    case let .controlChange(controller, value):
+                        self.lastExpression = "CC \(controller) = \(value)"
+                        self.onControlChange?(controller, value)
+                    case let .channelPressure(value):
+                        self.lastExpression = "AFTERTOUCH = \(value)"
+                        self.onChannelPressure?(value)
+                    case let .pitchBend(value):
+                        self.lastExpression = "BEND = \(value)"
+                        self.onPitchBend?(value)
+                    }
                 }
             }
         }
@@ -64,6 +86,7 @@ final class MIDIInputController: ObservableObject {
         enabled = false
         sourceNames = []
         lastNote = nil
+        lastExpression = nil
         status = "MIDI off"
     }
 
@@ -87,8 +110,15 @@ final class MIDIInputController: ObservableObject {
         status = names.isEmpty ? "MIDI on / no sources" : "MIDI on / \(names.count) source\(names.count == 1 ? "" : "s")"
     }
 
-    private nonisolated static func messages(from packets: UnsafePointer<MIDIEventList>) -> [(note: Int, on: Bool)] {
-        var output: [(note: Int, on: Bool)] = []
+    private enum Message {
+        case note(Int, Bool, Int)
+        case controlChange(Int, Int)
+        case channelPressure(Int)
+        case pitchBend(Int)
+    }
+
+    private nonisolated static func messages(from packets: UnsafePointer<MIDIEventList>) -> [Message] {
+        var output: [Message] = []
         var packet = packets.pointee.packet
         for _ in 0..<packets.pointee.numPackets {
             var words = packet.words
@@ -96,10 +126,21 @@ final class MIDIInputController: ObservableObject {
             let messageType = (word >> 28) & 0x0f
             let status = UInt8((word >> 16) & 0xff)
             let command = status & 0xf0
-            if messageType == 0x02, command == 0x90 || command == 0x80 {
-                let note = Int((word >> 8) & 0x7f)
-                let velocity = UInt8(word & 0xff)
-                output.append((note, command == 0x90 && velocity > 0))
+            let data1 = Int((word >> 8) & 0x7f)
+            let data2 = Int(word & 0x7f)
+            if messageType == 0x02 {
+                switch command {
+                case 0x80, 0x90:
+                    output.append(.note(data1, command == 0x90 && data2 > 0, data2))
+                case 0xb0:
+                    output.append(.controlChange(data1, data2))
+                case 0xd0:
+                    output.append(.channelPressure(data1))
+                case 0xe0:
+                    output.append(.pitchBend(data1 | (data2 << 7)))
+                default:
+                    break
+                }
             }
             packet = MIDIEventPacketNext(&packet).pointee
         }

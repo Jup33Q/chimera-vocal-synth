@@ -77,6 +77,24 @@ open build/Build/Products/Release/Chimera\ Play.app
 
 Every target copies the existing `public/data/cmudict.txt.gz` and expands it to `Contents/Resources/cmudict.txt`; native pronunciation must not silently fall back to letter-to-sound because the dictionary is absent. Play and Sing share `MIDIInputController` and `MIDIInputView` for CoreMIDI note-on/off input.
 
+### PolyBrute performance mapping
+
+Play auto-enables MIDI and accepts the following messages on **any MIDI channel (1–16)**. These are global controls for Chimera's monophonic voice, not independent per-note MPE voices.
+
+| PolyBrute control | MIDI channel / message | Chimera Play parameter | Mapping |
+|---|---|---|---|
+| Key strike (note velocity) | Any channel / Note On velocity | Pressure | 2–22 cmH₂O |
+| Key aftertouch | Any channel / Channel Pressure | Vibrato depth | 0–120 cents |
+| Morphée X | Any channel / CC 114 | Vowel Map X (F2) | Measured 0–127 covers the full horizontal vowel range |
+| Morphée Y | Any channel / CC 115 | Vowel Map Y (F1) | Measured 0–104 covers the full vertical vowel range |
+| Morphée Z | Any channel / CC 89 | Breathiness | Inverted: 0→1, 127→0 |
+| Ribbon | Any channel / CC 9 | Pitch offset | Center 64 = 0; endpoints = ±5 semitones |
+| Pitch wheel | Any channel / Pitch Bend | Pitch offset | 14-bit bend, ±12 semitones |
+| Mod wheel | Any channel / CC 1 | Vibrato depth | 0–120 cents |
+| External timbre input | Any channel / CC 74 | Brightness | 0–1 |
+
+With no MIDI input, Play explicitly initializes pressure 8 cmH₂O, breathiness 1 (matching inverted Morphée Z=0), vibrato 0, brightness 0.25, centered vowels (0.5, 0.5) and zero pitch offset instead of waiting for the first controller message.
+
 If Xcode reports a missing Metal compiler, run `xcodebuild -downloadComponent MetalToolchain` once.
 
 Head publishes NDJSON at `GET http://127.0.0.1:8647/head/stream`. Shared `HeadTelemetryFrame` Codable data includes `source="head"`, instance/project identity, `timestamp`, `Body`, `HumanArtic`, `HumanFrame`, `VoiceTelemetry`, `playing`, `active`, `beatStep` (`-1` when unavailable), `beatPlaying`, `engineRunning`, `renderedFrames` and `whisperEnabled`. Acoustic messages run at about 30 Hz and geometry is refreshed at 10 Hz on the main-side timer, never in the audio render callback. Controllers reconnect to this stream automatically instead of polling MCP for telemetry.

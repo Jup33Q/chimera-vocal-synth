@@ -210,6 +210,15 @@ final class InstrumentModel: ObservableObject {
             artic.ttY = tip.y
             airway = try api.airwayModel(body: bodyMix, sampleRate: audio?.sampleRate ?? 48_000)
             vowelSpace = VowelSpace(catalog: catalog, body: bodyMix)
+            if mode == .play {
+                source.pressure = 8
+                source.breathiness = 1
+                source.vibratoDepth = 0
+                source.brightness = 0.25
+                midiPitchOffset = 0
+                pitchBaseF0 = source.f0
+                setVowelPosition(x: 0.5, y: 0.5)
+            }
             for creature in catalog.creatures {
                 creatureParams[creature.id] = Dictionary(uniqueKeysWithValues: creature.params.map { ($0.key, $0.defaultValue) })
             }
@@ -325,7 +334,12 @@ final class InstrumentModel: ObservableObject {
         }
     }
 
+    private var vowelPosition = (x: 0.5, y: 0.5)
+
     func setVowelPosition(x: Double, y: Double) {
+        let x = min(1, max(0, x))
+        let y = min(1, max(0, y))
+        vowelPosition = (x, y)
         guard let vowelSpace else { return }
         artic = vowelSpace.articulation(x: x, y: y, base: catalog?.neutral ?? .zero)
         refreshGeometry()
@@ -656,6 +670,70 @@ final class InstrumentModel: ObservableObject {
         songSyllable = nil
     }
 
+    @Published private(set) var midiPitchOffset = 0.0
+    private var pitchBaseF0: Double?
+
+    func setPitch(_ f0: Double) {
+        midiPitchOffset = 0
+        pitchBaseF0 = f0
+        source.f0 = f0
+    }
+
+    func setMIDIPitchBend(_ value: Int) {
+        let value = min(16_383, max(0, value))
+        let position = value < 8_192 ? Double(value - 8_192) / 8_192 : Double(value - 8_192) / 8_191
+        setMIDIPitchOffset(position * 12)
+    }
+
+    func midiControlChange(_ controller: Int, value: Int) {
+        let unit = midiUnit(value)
+        switch controller {
+        case 1: source.vibratoDepth = 120 * unit
+        case 9:
+            let value = min(127, max(0, value))
+            let position = value <= 64 ? Double(value - 64) / 64 : Double(value - 64) / 63
+            setMIDIPitchOffset(position * 5)
+        case 74: source.brightness = unit
+        case 89: setMIDIBreathiness(value)
+        case 114: setVowelPosition(x: unit, y: vowelPosition.y)
+        case 115: setVowelPosition(x: vowelPosition.x, y: midiUnit(value, range: 0...104))
+        default: break
+        }
+    }
+
+    func setMIDIVelocity(_ value: Int) {
+        source.pressure = 2 + 20 * midiUnit(value)
+    }
+
+    func setMIDIBreathiness(_ value: Int) {
+        source.breathiness = 1 - midiUnit(value)
+    }
+
+    func setMIDIVibrato(_ value: Int) {
+        source.vibratoDepth = 120 * midiUnit(value)
+    }
+
+    private func midiUnit(_ value: Int, range: ClosedRange<Int> = 0...127) -> Double {
+        let value = min(range.upperBound, max(range.lowerBound, value))
+        return Double(value - range.lowerBound) / Double(range.upperBound - range.lowerBound)
+    }
+
+    private func setMIDIPitchOffset(_ offset: Double) {
+        if pitchBaseF0 == nil { pitchBaseF0 = source.f0 }
+        midiPitchOffset = offset
+        applyMIDIPitch()
+    }
+
+    private func updateHumanPitch(midi: Int) {
+        pitchBaseF0 = 440 * pow(2, Double(midi - 69) / 12)
+        applyMIDIPitch()
+    }
+
+    private func applyMIDIPitch() {
+        guard let pitchBaseF0 else { return }
+        source.f0 = min(1_100, max(40, pitchBaseF0 * pow(2, midiPitchOffset / 12)))
+    }
+
     func noteOn(_ midi: Int) {
         if let remote {
             if !heldNotes.contains(midi) { heldNotes.append(midi) }
@@ -672,8 +750,9 @@ final class InstrumentModel: ObservableObject {
                 syllableCursor = (syllableCursor + 1) % songSyllables.count
                 return
             }
-            if mode != .bestiary { source.f0 = 440 * pow(2, Double(midi - 69) / 12) }
+            if mode != .bestiary { updateHumanPitch(midi: midi) }
             remote.noteOn(midi)
+            if mode != .bestiary && midiPitchOffset != 0 { remote.setSource(source) }
             updateGate()
             return
         }
@@ -690,7 +769,7 @@ final class InstrumentModel: ObservableObject {
                 setCreatureParam(pitch.key, value: frequency)
             }
         } else {
-            source.f0 = 440 * pow(2, Double(midi - 69) / 12)
+            updateHumanPitch(midi: midi)
         }
         updateGate()
     }
@@ -709,10 +788,11 @@ final class InstrumentModel: ObservableObject {
                     setCreatureParam(pitch.key, value: creatureFrequency(midi: last, param: pitch))
                 }
             } else {
-                source.f0 = 440 * pow(2, Double(last - 69) / 12)
+                updateHumanPitch(midi: last)
             }
         }
         remote?.noteOff(midi)
+        if mode != .bestiary && midiPitchOffset != 0 { remote?.setSource(source) }
         updateGate()
     }
 
