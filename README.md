@@ -88,7 +88,7 @@ Play auto-enables MIDI and accepts the following messages on **any MIDI channel 
 | Morphée X | Any channel / CC 114 | Vowel Map X (F2) | Measured 0–127 covers the full horizontal vowel range |
 | Morphée Y | Any channel / CC 115 | Vowel Map Y (F1) | Measured 0–104 covers the full vertical vowel range |
 | Morphée Z | Any channel / CC 89 | Breathiness | Inverted: 0→1, 127→0 |
-| Ribbon | Any channel / CC 9 | Pitch offset | Center 64 = 0; endpoints = ±5 semitones |
+| Ribbon | Any channel / CC 9 | Pitch offset | Touch-down position = 0; quadratic interpolation maps min…down to -5…0 and down…max to 0…+5 semitones; release returns to 0 |
 | Pitch wheel | Any channel / Pitch Bend | Pitch offset | 14-bit bend, ±12 semitones |
 | Mod wheel | Any channel / CC 1 | Vibrato depth | 0–120 cents |
 | External timbre input | Any channel / CC 74 | Brightness | 0–1 |

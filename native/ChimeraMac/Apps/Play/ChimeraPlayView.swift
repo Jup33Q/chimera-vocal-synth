@@ -112,7 +112,7 @@ private struct PlayControls: View {
                             .frame(width: 220)
                     }
                     MIDIInputView(midi: midi)
-                    Text("RIBBON CC9 ±5 ST  ·  MORPHÉE X/Y FULL VOWELS (Y 0…104) / Z INVERTED BREATHINESS  ·  VELOCITY PRESSURE / AFTERTOUCH VIBRATO")
+                    Text("RIBBON CC9 ±5 ST QUADRATIC / TOUCH=0  ·  MORPHÉE X/Y FULL VOWELS (Y 0…104) / Z INVERTED BREATHINESS  ·  VELOCITY PRESSURE / AFTERTOUCH VIBRATO")
                         .font(.system(size: 8, design: .monospaced))
                         .foregroundStyle(.secondary)
                     PianoKeys(heldNotes: model.heldNotes, onNoteOn: model.noteOn, onNoteOff: model.noteOff)

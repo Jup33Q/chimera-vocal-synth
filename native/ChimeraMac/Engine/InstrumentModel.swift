@@ -685,14 +685,41 @@ final class InstrumentModel: ObservableObject {
         setMIDIPitchOffset(position * 12)
     }
 
+    private var ribbonAnchor: Int?
+    private var ribbonTouching = false
+    private var ribbonLastTime = 0.0
+
+    func setMIDIRibbon(_ value: Int) {
+        let value = min(127, max(0, value))
+        let now = Date().timeIntervalSince1970
+        let newTouch = ribbonAnchor == nil || (!ribbonTouching && now - ribbonLastTime > 0.12)
+        if value == 64 {
+            if newTouch { ribbonAnchor = 64 }
+            ribbonTouching = newTouch
+            ribbonLastTime = now
+            setMIDIPitchOffset(0)
+            return
+        }
+        if newTouch { ribbonAnchor = value }
+        ribbonTouching = true
+        ribbonLastTime = now
+        guard let down = ribbonAnchor else { return }
+        if value == down {
+            setMIDIPitchOffset(0)
+        } else if value < down {
+            let position = Double(down - value) / Double(down)
+            setMIDIPitchOffset(-5 * position * position)
+        } else {
+            let position = Double(value - down) / Double(127 - down)
+            setMIDIPitchOffset(5 * position * position)
+        }
+    }
+
     func midiControlChange(_ controller: Int, value: Int) {
         let unit = midiUnit(value)
         switch controller {
         case 1: source.vibratoDepth = 120 * unit
-        case 9:
-            let value = min(127, max(0, value))
-            let position = value <= 64 ? Double(value - 64) / 64 : Double(value - 64) / 63
-            setMIDIPitchOffset(position * 5)
+        case 9: setMIDIRibbon(value)
         case 74: source.brightness = unit
         case 89: setMIDIBreathiness(value)
         case 114: setVowelPosition(x: unit, y: vowelPosition.y)
